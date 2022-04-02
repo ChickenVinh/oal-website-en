@@ -1,42 +1,45 @@
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
 import React from "react"
+import Nav from "react-bootstrap/Nav"
+import Navbar from "react-bootstrap/Navbar"
+import NavDropdown from "react-bootstrap/NavDropdown"
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
+const Header = () => (
+  <div className="container">
+    <Navbar expand="lg">
+      <Navbar.Brand href="/">
+        <img
+          src="/logo.svg"
+          width="200px"
+          className="d-inline-block align-top"
+          alt="Oak and Lotus logo"
+          style={{ margin: 0 }}
+        />
+      </Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="ml-auto">
+          <Nav.Link href="/">Home</Nav.Link>
+          <NavDropdown title="Portfolio" id="basic-nav-dropdown">
+            <NavDropdown.Item href="#action/3.1">
+              Management Consulting
+            </NavDropdown.Item>
+            <NavDropdown.Item href="#action/3.2">
+              Human Resources
+            </NavDropdown.Item>
+            <NavDropdown.Item href="#action/3.3">
+              Project Consulting
+            </NavDropdown.Item>
+            <NavDropdown.Divider />
+            <NavDropdown.Item href="#action/3.4">
+              Separated link
+            </NavDropdown.Item>
+          </NavDropdown>
+          <Nav.Link href="about">About</Nav.Link>
+          <Nav.Link href="contact">Contact</Nav.Link>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
+  </div>
 )
-
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Header.defaultProps = {
-  siteTitle: ``,
-}
 
 export default Header
